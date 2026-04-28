@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Bash(python3 *)",
+      "PowerShell(Get-Command *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "Bash(git push *)"
+    ]
+  }
+}
