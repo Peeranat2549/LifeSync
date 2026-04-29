@@ -209,7 +209,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
 .nav-item.active .nav-dot{opacity:1;}
 
 /* MODALS */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;justify-content:center;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;align-items:flex-end;justify-content:center;}
 .modal-overlay.open{display:flex;animation:fadeIn .2s ease;}
 .modal{background:var(--surface);border-radius:20px 20px 0 0;padding:20px 20px 36px;width:100%;max-width:420px;animation:slideUp .28s ease;border:1px solid var(--border);border-bottom:none;}
 .modal-handle{width:36px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 16px;}
@@ -241,7 +241,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
 .onboard-btn:hover{opacity:.9;}
 
 /* CONFIRM */
-.confirm-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;display:none;align-items:center;justify-content:center;padding:20px;}
+.confirm-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:700;display:none;align-items:center;justify-content:center;padding:20px;}
 .confirm-dialog.open{display:flex;animation:fadeIn .15s ease;}
 .confirm-box{background:var(--surface);border-radius:16px;padding:22px;width:100%;max-width:300px;border:1px solid var(--border);text-align:center;}
 .confirm-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;}
@@ -251,7 +251,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
 .confirm-ok{flex:1;padding:10px;border-radius:10px;border:none;background:#ef4444;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;}
 
 /* TOAST */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);border-radius:20px;padding:9px 18px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:400;white-space:nowrap;box-shadow:var(--shadow-md);}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);border-radius:20px;padding:9px 18px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:800;white-space:nowrap;box-shadow:var(--shadow-md);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* MISC */
@@ -259,6 +259,84 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
 .empty-icon{font-size:32px;margin-bottom:10px;opacity:.35;}
 .empty-state p{max-width:200px;margin:0 auto;line-height:1.6;}
 .divider{height:1px;background:var(--border);margin:14px 0;}
+/* CONSENT */
+.consent-row{display:flex;align-items:flex-start;gap:10px;margin:14px 0 4px;text-align:left;cursor:pointer;}
+.consent-row input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--accent);flex-shrink:0;cursor:pointer;}
+.consent-row span{font-size:12px;color:var(--text2);line-height:1.6;}
+.consent-link{background:none;border:none;color:var(--accent);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline;padding:0;display:inline;}
+/* POLICY */
+.modal-body{max-height:55vh;overflow-y:auto;padding-right:2px;margin-top:8px;}
+.policy-section{margin-bottom:14px;}
+.policy-section h3{font-size:11px;font-weight:700;color:var(--text);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+.policy-section p,.policy-section li{font-size:12px;color:var(--text2);line-height:1.7;}
+.policy-section ul{padding-left:14px;}
+.policy-section li{margin-bottom:2px;}
+
+/* ─── RESPONSIVE: TABLET 640px+ ─────────────────────────── */
+@media (min-width:640px){
+  .app{max-width:700px;}
+  .bottom-nav{max-width:700px;}
+  .editor-wrap{max-width:700px;}
+
+  .modal-overlay{align-items:center;padding:20px;}
+  .modal{border-radius:16px;max-width:480px;padding-bottom:24px;animation:fadeUp .22s ease;}
+  .modal-handle{display:none;}
+
+  .onboard-box{max-width:420px;}
+
+  .page{padding:22px 28px;}
+  .header{padding:14px 28px;}
+  .tabs{padding:0 28px;}
+
+  .note-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .note-list .empty-state{grid-column:1/-1;}
+  .friends-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .friends-list .empty-state{grid-column:1/-1;}
+
+  .toast{bottom:100px;}
+}
+
+/* ─── RESPONSIVE: DESKTOP 1024px+ ───────────────────────── */
+@media (min-width:1024px){
+  /* Sidebar nav */
+  .bottom-nav{
+    top:0;left:0;bottom:auto;
+    width:220px;height:100vh;max-width:220px;
+    transform:none;
+    flex-direction:column;align-items:stretch;justify-content:flex-start;
+    border-top:none;border-right:1px solid var(--border);
+    padding:0 0 20px;overflow-y:auto;
+  }
+  .bottom-nav::before{
+    content:'LifeSync';
+    display:block;padding:22px 20px 18px;
+    font-size:15px;font-weight:700;color:var(--accent);letter-spacing:-.3px;
+    border-bottom:1px solid var(--border);margin-bottom:8px;
+  }
+  .nav-item{flex-direction:row;justify-content:flex-start;padding:11px 12px;gap:12px;margin:2px 8px;border-radius:10px;}
+  .nav-item:hover{background:var(--surface2);}
+  .nav-item.active{background:var(--accent-light);}
+  .nav-item.active .nav-icon{transform:none;}
+  .nav-icon{font-size:18px;}
+  .nav-label{font-size:13px;color:var(--text2);font-weight:500;opacity:1;}
+  .nav-item.active .nav-label{color:var(--accent);font-weight:600;}
+  .nav-dot{display:none;}
+
+  /* Content area shifts right of sidebar */
+  .app{margin:0 auto 0 220px;max-width:none;width:calc(100% - 220px);padding-bottom:24px;}
+  .editor-wrap{left:220px;max-width:none;width:calc(100% - 220px);}
+
+  .page{padding:28px 36px;max-width:1200px;}
+  .header{padding:16px 36px;}
+  .tabs{padding:0 36px;}
+
+  .note-list{grid-template-columns:repeat(3,1fr);}
+  .friends-list{grid-template-columns:repeat(2,1fr);}
+
+  .modal{max-width:540px;}
+  .toast{bottom:24px;left:calc(50% + 110px);}
+  .greeting h2{font-size:24px;}
+}
 </style>
 </head>
 <body>
@@ -271,6 +349,10 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
     <p class="onboard-sub">จดบันทึกง่ายๆ แชร์ให้เพื่อนดูได้<br>ว่าช่วงนี้เราทำอะไรอยู่และจะทำอะไร</p>
     <label class="onboard-label" for="onboard-name">ชื่อเล่นของคุณ</label>
     <input class="input-field" id="onboard-name" placeholder="เช่น มิ้นท์, บอส, เรเน่..." maxlength="20">
+    <label class="consent-row" for="consent-check">
+      <input type="checkbox" id="consent-check">
+      <span>ฉันได้อ่านและยอมรับ <button class="consent-link" type="button" onclick="openModal('modal-privacy');event.stopPropagation()">นโยบายความเป็นส่วนตัว</button> ของ LifeSync</span>
+    </label>
     <button class="onboard-btn" onclick="finishOnboard()">เริ่มใช้งาน →</button>
   </div>
 </div>
@@ -414,6 +496,14 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
         </div>
         <div class="settings-row-right">เร็วๆ นี้</div>
       </div>
+      <div class="settings-row" onclick="openModal('modal-privacy')">
+        <span class="settings-row-icon">🔐</span>
+        <div class="settings-row-text">
+          <div class="settings-row-title">นโยบายความเป็นส่วนตัว</div>
+          <div class="settings-row-sub" id="consent-date-sub">PDPA · สิทธิ์ของคุณ</div>
+        </div>
+        <div class="settings-row-right">›</div>
+      </div>
       <div class="settings-row" onclick="confirmReset()">
         <span class="settings-row-icon">🗑️</span>
         <div class="settings-row-text">
@@ -517,12 +607,59 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Thai',san
   </div>
 </div>
 
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal-overlay" id="modal-privacy" onclick="if(event.target===this)closeModal('modal-privacy')">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-top">
+      <h2>🔐 นโยบายความเป็นส่วนตัว</h2>
+      <button class="modal-close" onclick="closeModal('modal-privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="policy-section">
+        <h3>1. ข้อมูลที่เราเก็บ</h3>
+        <ul>
+          <li>ชื่อเล่นที่คุณตั้งในแอป</li>
+          <li>บันทึกและเนื้อหาทั้งหมดที่คุณสร้าง</li>
+          <li>การตั้งค่า เช่น ธีมสีและรายชื่อเพื่อน</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h3>2. วิธีที่เราใช้ข้อมูล</h3>
+        <ul>
+          <li>เพื่อให้บริการ LifeSync แก่คุณเท่านั้น</li>
+          <li>แสดงบันทึกให้เพื่อนดูเฉพาะที่คุณตั้งเป็น "แชร์" เท่านั้น</li>
+          <li>ไม่ใช้ข้อมูลเพื่อการโฆษณาหรือขายให้บุคคลที่สาม</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h3>3. การจัดเก็บข้อมูล</h3>
+        <p>ข้อมูลทั้งหมดถูกเก็บในเบราว์เซอร์ของคุณ (localStorage) บนอุปกรณ์ของคุณเอง ไม่ได้ส่งไปยังเซิร์ฟเวอร์ภายนอก</p>
+      </div>
+      <div class="policy-section">
+        <h3>4. สิทธิ์ของคุณตาม PDPA</h3>
+        <ul>
+          <li><strong>สิทธิ์เข้าถึง</strong> — ดูข้อมูลทั้งหมดได้ในแอป</li>
+          <li><strong>สิทธิ์แก้ไข</strong> — แก้ไขชื่อได้ในหน้าโปรไฟล์</li>
+          <li><strong>สิทธิ์ลบ</strong> — ลบข้อมูลทั้งหมดได้ผ่าน "ล้างข้อมูลทั้งหมด" ในการตั้งค่า</li>
+          <li><strong>สิทธิ์ถอนความยินยอม</strong> — ถอนได้ตลอดเวลาโดยการลบข้อมูลทั้งหมด</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h3>5. ติดต่อเรา</h3>
+        <p>หากมีคำถามเกี่ยวกับข้อมูลส่วนบุคคล ติดต่อได้ที่ <strong>privacy@lifesync.app</strong></p>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:4px">อัปเดตล่าสุด: เมษายน 2569 · LifeSync v1.0</p>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 // ── STATE ──────────────────────────────────────────────────
 let S = {
-  user: { name:'', initial:'', joinDate:'', code:'' },
+  user: { name:'', initial:'', joinDate:'', code:'', consentDate:'' },
   notes: [],
   friends: [],
   theme: 'warm',
@@ -559,10 +696,14 @@ if (!S.user.name) {
 function finishOnboard() {
   const name = document.getElementById('onboard-name').value.trim();
   if (!name) { showToast('กรุณาใส่ชื่อก่อนนะ 😊'); return; }
+  if (!document.getElementById('consent-check').checked) {
+    showToast('กรุณายอมรับนโยบายความเป็นส่วนตัวก่อน 🔐'); return;
+  }
   S.user.name = name;
   S.user.initial = name.charAt(0);
   S.user.joinDate = new Date().toLocaleDateString('th-TH',{month:'short',year:'numeric'});
   S.user.code = 'LIFE-' + Math.random().toString(36).slice(2,6).toUpperCase();
+  S.user.consentDate = new Date().toISOString();
   seedData();
   save();
   boot();
@@ -962,6 +1103,11 @@ function renderProfile() {
 
 
 
+  if (S.user.consentDate) {
+    const d = new Date(S.user.consentDate).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
+    const el = document.getElementById('consent-date-sub');
+    if (el) el.textContent = `ยอมรับเมื่อ ${d}`;
+  }
   applyTheme(S.theme || 'warm');
 }
 

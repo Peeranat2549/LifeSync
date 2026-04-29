@@ -1,0 +1,1 @@
+Stage all changes, create a commit with a short descriptive message summarizing what changed, then push to origin. Use `git add .`, then commit with an appropriate message based on the actual changes (use `git diff --cached` to see what's staged), then `git push`.
