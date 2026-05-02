@@ -1,5 +1,5 @@
-const CACHE = 'lifesync-v1';
-const SHELL = ['./lifesync.html'];
+const CACHE = 'lifesync-v2';
+const SHELL = ['./lifesync.html', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).catch(() => {}));

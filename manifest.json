@@ -3,10 +3,14 @@
   "short_name": "LifeSync",
   "description": "จดบันทึกง่ายๆ แชร์ให้เพื่อนดูได้",
   "start_url": "./lifesync.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#f9f8f6",
   "theme_color": "#e8622a",
   "lang": "th",
-  "categories": ["productivity", "lifestyle"]
+  "categories": ["productivity", "lifestyle"],
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
 }
