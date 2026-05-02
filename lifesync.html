@@ -461,6 +461,14 @@ button,a,.tag,.note-card,.settings-row,.theme-swatch,.nav-item,.icon-btn,.tab{to
 </div>
 
 <!-- ONBOARDING -->
+<div id="inapp-banner" style="display:none;position:fixed;inset:0;z-index:9999;background:#1a1a1a;color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;">
+  <div style="font-size:48px;margin-bottom:16px">🌐</div>
+  <h2 style="margin:0 0 12px;font-size:20px">กรุณาเปิดใน Safari</h2>
+  <p style="margin:0 0 24px;color:#ccc;font-size:15px;line-height:1.6">แอปนี้ไม่รองรับ login ผ่าน browser ในแอป<br>กรุณากด "เปิดใน Safari" หรือ copy URL ไปเปิดใน Safari</p>
+  <button onclick="window.open(location.href,'_blank')" style="background:#e8622a;color:#fff;border:none;border-radius:12px;padding:14px 28px;font-size:16px;cursor:pointer;margin-bottom:12px">เปิดใน Safari</button>
+  <button onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>this.textContent='คัดลอกแล้ว!')" style="background:#333;color:#fff;border:none;border-radius:12px;padding:14px 28px;font-size:16px;cursor:pointer">คัดลอก URL</button>
+</div>
+
 <div class="onboard-wrap" id="onboard" style="display:none">
   <div class="onboard-box">
     <div class="onboard-logo">📝</div>
@@ -932,6 +940,17 @@ let unsubNotes = null, unsubFeed = null, unsubRequests = null;
 let ePrivacy = 'private', ePinned = false, eId = null, blocks = [], curType = 'text';
 let confirmFn = null, editorInHistory = false;
 let autoSaveTimer = null;
+
+// ── IN-APP BROWSER DETECTION ───────────────────────────────
+(function() {
+  const ua = navigator.userAgent || '';
+  const isInApp = /FBAN|FBAV|Instagram|Line\/|MicroMessenger|Twitter|LinkedIn/i.test(ua)
+    || (/(iPhone|iPod|iPad)/.test(ua) && !/Safari\//.test(ua) && /AppleWebKit/.test(ua));
+  if (isInApp) {
+    const banner = document.getElementById('inapp-banner');
+    if (banner) { banner.style.display = 'flex'; }
+  }
+})();
 
 // ── AUTH BOOT ──────────────────────────────────────────────
 auth.getRedirectResult().then(result => {
