@@ -934,6 +934,10 @@ let confirmFn = null, editorInHistory = false;
 let autoSaveTimer = null;
 
 // ── AUTH BOOT ──────────────────────────────────────────────
+auth.getRedirectResult().then(result => {
+  if (result && result.user) { /* onAuthStateChanged จะ handle */ }
+}).catch(() => {});
+
 auth.onAuthStateChanged(async fbUser => {
   if (fbUser) { currentUser = fbUser; await loadUserData(); }
   else { showOnboard(); }
@@ -1788,8 +1792,12 @@ async function signInWithGoogle() {
   btn.innerHTML = '<span style="font-size:16px">⏳</span> กำลังเข้าสู่ระบบ...';
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
-    await auth.signInWithPopup(provider);
-    // onAuthStateChanged จะ handle ต่อเอง
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      await auth.signInWithRedirect(provider);
+    } else {
+      await auth.signInWithPopup(provider);
+    }
   } catch(err) {
     if (err.code !== 'auth/popup-closed-by-user') showToast('เข้าสู่ระบบไม่สำเร็จ ลองใหม่');
     btn.disabled = false; btn.innerHTML = orig;
