@@ -702,6 +702,14 @@ button,a,.tag,.note-card,.settings-row,.theme-swatch,.nav-item,.icon-btn,.tab{to
         </div>
         <div class="settings-row-right">›</div>
       </div>
+      <div class="settings-row" onclick="confirmLogout()">
+        <span class="settings-row-icon" style="color:#f59e0b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+        <div class="settings-row-text">
+          <div class="settings-row-title" style="color:#f59e0b">ออกจากระบบ</div>
+          <div class="settings-row-sub">กลับไปหน้า login</div>
+        </div>
+        <div class="settings-row-right">›</div>
+      </div>
       <div class="settings-row" onclick="confirmReset()">
         <span class="settings-row-icon" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></span>
         <div class="settings-row-text">
@@ -1656,6 +1664,14 @@ function openConfirm(title, text, okLabel, fn) {
 }
 function closeConfirm() { document.getElementById('confirm-dialog').classList.remove('open'); confirmFn=null; }
 function runConfirm()   { confirmFn?.(); closeConfirm(); }
+
+function confirmLogout() {
+  openConfirm('ออกจากระบบ','คุณต้องการออกจากระบบใช่ไหม?','ออกจากระบบ', async () => {
+    if (unsubRequests) { unsubRequests(); unsubRequests = null; }
+    await auth.signOut();
+    location.reload();
+  });
+}
 
 function confirmReset() {
   openConfirm('ล้างข้อมูลทั้งหมด','จะลบบันทึก เพื่อน และการตั้งค่าทั้งหมด ไม่สามารถกู้คืนได้','ล้างข้อมูล', async () => {
