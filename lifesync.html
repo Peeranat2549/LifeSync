@@ -461,12 +461,12 @@ button,a,.tag,.note-card,.settings-row,.theme-swatch,.nav-item,.icon-btn,.tab{to
 </div>
 
 <!-- ONBOARDING -->
-<div id="inapp-banner" style="display:none;position:fixed;inset:0;z-index:9999;background:#1a1a1a;color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;">
+<div id="inapp-banner" style="display:none;position:fixed;inset:0;z-index:9999;background:#1a1a1a;color:#fff;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;">
   <div style="font-size:48px;margin-bottom:16px">🌐</div>
   <h2 style="margin:0 0 12px;font-size:20px">กรุณาเปิดใน Safari</h2>
-  <p style="margin:0 0 24px;color:#ccc;font-size:15px;line-height:1.6">แอปนี้ไม่รองรับ login ผ่าน browser ในแอป<br>กรุณากด "เปิดใน Safari" หรือ copy URL ไปเปิดใน Safari</p>
-  <button onclick="window.open(location.href,'_blank')" style="background:#e8622a;color:#fff;border:none;border-radius:12px;padding:14px 28px;font-size:16px;cursor:pointer;margin-bottom:12px">เปิดใน Safari</button>
-  <button onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>this.textContent='คัดลอกแล้ว!')" style="background:#333;color:#fff;border:none;border-radius:12px;padding:14px 28px;font-size:16px;cursor:pointer">คัดลอก URL</button>
+  <p style="margin:0 0 16px;color:#ccc;font-size:15px;line-height:1.6">แอปนี้ไม่รองรับ login ผ่าน browser ในแอป<br>กรุณา copy URL แล้วเปิดใน Safari</p>
+  <div style="background:#222;border-radius:10px;padding:12px 16px;margin-bottom:20px;word-break:break-all;font-size:13px;color:#aaa;max-width:320px">lifesyncprototype.netlify.app</div>
+  <button id="copy-url-btn" onclick="navigator.clipboard.writeText('https://lifesyncprototype.netlify.app').then(()=>{this.textContent='✓ คัดลอกแล้ว!';this.style.background='#4caf50';})" style="background:#e8622a;color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:16px;cursor:pointer">คัดลอก URL</button>
 </div>
 
 <div class="onboard-wrap" id="onboard" style="display:none">
